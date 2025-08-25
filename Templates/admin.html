@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+        }
+        .header, .footer {
+            background-color: #333;
+            color: white;
+            padding: 5px 0;
+            text-align: center;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .admin-section {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        h2, h3 {
+            margin-top: 0;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .orange-link {
+            color: orange;
+        }
+        /* New CSS class for fixed-size images */
+        .fixed-image {
+            width: 100px; /* Fixed width */
+            height: 100px; /* Fixed height */
+            object-fit: cover; /* Ensures the image fits within the dimensions */
+            margin-right: 10px; /* Optional: adds spacing between image and text */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Admin Page</h1>
+    </div>
+
+    <div class="admin-section">
+        <h2>Admin Dashboard</h2>
+        
+        {% if session.user_id %}
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
+        <a href="{{ url_for('add_local_area') }}" class="orange-link">Add Local Area</a>
+        {% else %}
+        <a href="mamidojuvinay310@gmail.com">Contact Us</a>
+        {% endif %}
+        <h3>Missing Persons</h3>
+        <ul>
+            {% for person in missing_persons %}
+                <li>
+                    <img src="{{ person[3] }}" alt="Photo" class="fixed-image">
+                    <div>
+                        Name: {{ person[0] }} - Age: {{ person[1] }} - Gender: {{ person[2] }} - Status: {{ person[4] }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <h3>Found Persons</h3>
+        <ul>
+            {% for person in found_persons %}
+                <li>
+                    <img src="{{ person[3] }}" alt="Photo" class="fixed-image">
+                    <div>
+                        Age: {{ person[0] }} - Gender: {{ person[1] }} - Email: {{ person[2] }} - Status: {{ person[4] }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <h3>Local Areas</h3>
+        <ul>
+            {% for area in local_areas %}
+                <li>
+                    <img src="{{ area[3] }}" alt="Photo" class="fixed-image">
+                    <div>
+                        Age: {{ area[0] }} - Gender: {{ area[1] }} - Place: {{ area[2] }} - Status: {{ area[4] }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 Missing Person Reporting System</p>
+        <a href="mailto:contact@example.com">Contact Us</a>
+    </div>
+</body>
+</html>

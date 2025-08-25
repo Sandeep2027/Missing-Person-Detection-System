@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Forgot Password{% endblock %}
+
+{% block content %}
+<h2 class="text-center">Forgot Password</h2>
+<form method="POST" action="{{ url_for('forgot') }}">
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Send OTP</button>
+</form>
+{% endblock %}

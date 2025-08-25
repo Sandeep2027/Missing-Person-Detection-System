@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Report Found Person{% endblock %}
+
+{% block content %}
+<h2 class="text-center">Report Found Person</h2>
+<form method="POST" action="{{ url_for('found_person') }}" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" class="form-control" id="age" name="age" required>
+    </div>
+    <div class="form-group">
+        <label for="gender">Gender</label>
+        <select class="form-control" id="gender" name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female"> Female</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="email">Your Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+        <label for="image">Upload Image</label>
+        <input type="file" class="form-control-file" id="image" name="image" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Report Found</button>
+</form>
+{% endblock %}
