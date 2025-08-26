@@ -63,7 +63,7 @@ ADMIN_PASSWORD = "M@vinay123"
 
 
 def send_verification_email(to_email, subject, content):
-    api_key = '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'
+    api_key = 'SG.JDjon9yJS5e_UQOG2Tuv2Q.FdUgkDEQQl94zBFRWtLKgIytFv9dmvVVRoY234eM'
     sg = SendGridAPIClient(api_key)
     message = Mail(
         from_email='pittalasandeep124@gmail.com',
@@ -773,4 +773,5 @@ def logout():
     return redirect(url_for('home'))
 
 if __name__ == '__main__':
+
     app.run(debug=True)
